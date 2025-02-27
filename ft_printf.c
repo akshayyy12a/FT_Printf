@@ -6,47 +6,58 @@
 /*   By: shessoun <shessoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 23:03:36 by shessoun          #+#    #+#             */
-/*   Updated: 2025/02/27 13:23:13 by shessoun         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:18:12 by shessoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	check_format(int i, const char*format, ...)
+static int	is_format(char c)
 {
-	va_list	param;
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
+		|| c == 'x' || c == 'X' || c == '%')
+	{
+		return (1);
+	}
+	return (0);
+}
 
-	va_start(param, format);
-	if (format[i] == '%' && format[i + 1] == 's')
-		ft_printf_s(va_arg(param, char *));
-	else if (format[i] == '%'
-		&& (format[i + 1] == 'i' || format[i + 1] == 'd'))
-		ft_printf_i(va_arg(param, int));
-	else if (format[i] == '%' && format[i + 1] == 'c')
-		ft_printf_c(va_arg(param, int));
-	else if (format[i] == '%' && format[i + 1] == 'u')
-		ft_printf_u(va_arg(param, int));
-	else if (format[i] == '%' && format[i + 1] == '%')
+static void	check_format(char c, va_list args)
+{
+	if (c == 's')
+		ft_printf_s(va_arg(args, char *));
+	else if (c == 'd' || c == 'i')
+		ft_printf_i(va_arg(args, int));
+	else if (c == 'c')
+		ft_printf_c(va_arg(args, int));
+	else if (c == 'u')
+		ft_printf_u(va_arg(args, int));
+	else if (c == '%')
 		ft_putchar_fd('%', 1);
-	else if (format[i] == '%' && format[i + 1] == 'x')
-		ft_printf_x(va_arg(param, int));
-	else if (format[i] == '%' && format[i + 1] == 'X')
-		ft_printf_X(va_arg(param, int));
-	else if (format[i] == '%' && format[i + 1] == 'p')
-		ft_printf_p(va_arg(param, unsigned long));
-	else if (format[i] == '\n')
-		ft_putchar_fd('\n', 1);
-	va_end(param);
+	else if (c == 'x')
+		ft_printf_x(va_arg(args, int));
+	else if (c == 'X')
+		ft_printf_bx(va_arg(args, int));
+	else if (c == 'p')
+		ft_printf_p(va_arg(args, unsigned long));
 }
 
 int	ft_printf(const char *format, ...)
 {
 	int		i;
+	va_list	param;
 
 	i = 0;
+	va_start(param, format);
 	while (format[i] != '\0')
 	{
-		check_format(i, format);
+		if (format[i] == '%' && is_format(format[i + 1]) == 1)
+		{
+			check_format(format[i + 1], param);
+			i++;
+		}
+		else
+			ft_putchar_fd(format[i], 1);
 		i++;
 	}
 	return (0);
