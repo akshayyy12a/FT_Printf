@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_p.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shessoun <shessoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 23:04:49 by shessoun          #+#    #+#             */
-/*   Updated: 2025/02/27 12:57:23 by shessoun         ###   ########.fr       */
+/*   Created: 2025/02/27 12:55:18 by shessoun          #+#    #+#             */
+/*   Updated: 2025/02/27 13:17:44 by shessoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "../lib/libft.h"
+static void	ft_putnbr_base(unsigned long nbr)
+{
+	char	*base;
 
-int		ft_printf(const char *format, ...);
-void	ft_printf_s(char *s);
-void	ft_printf_i(int n);
-void	ft_printf_c(char c);
-void	ft_printf_u(int n);
-void	ft_printf_x(int nb);
-void	ft_printf_X(int nb);
-void	ft_printf_p(unsigned long nb);
+	base = "0123456789abcdef";
+	if (nbr >= 16)
+		ft_putnbr_base(nbr / 16);
+	ft_putchar_fd(base[(nbr % 16)], 1);
+}
 
-#endif
+void	ft_printf_p(unsigned long nb)
+{
+	ft_putchar_fd('0', 1);
+	ft_putchar_fd('x', 1);
+	ft_putnbr_base(nb);
+}

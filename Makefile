@@ -6,7 +6,7 @@ INCLUDES = -Ilib
 HEADER = ft_printf.h
 LIBFT = lib/libft.a
 
-SRCS = ft_printf.c ft_printf_s.c ft_printf_u.c ft_printf_c.c ft_printf_i.c
+SRCS = ft_printf.c ft_printf_s.c ft_printf_u.c ft_printf_c.c ft_printf_i.c ft_printf_p.c ft_printf_x.c ft_printf_X.c
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 RED        = \033[0;31m
@@ -37,12 +37,12 @@ $(LIBFT):
 clean:
 	@printf "$(BOLD)$(BLUE)%12s$(RESET): $(RED)Removing$(RESET) object files\n" $(NAME)
 	@rm -rf $(OBJ_DIR)
-	@$(MAKE) -C lib clean
+	@$(MAKE)
 
 fclean: clean
 	@printf "$(BOLD)$(BLUE)%12s$(RESET): $(RED)Removing$(RESET) library\n" $(NAME)
 	@rm -f $(NAME)
-	@$(MAKE) -C lib fclean
+	@$(MAKE)
 
 re: fclean all
 
