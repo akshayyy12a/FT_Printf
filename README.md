@@ -51,7 +51,5 @@ cc -Wall -Wextra -Werror main.c libftprintf.a -o test
 - `make fclean` : Supprime les fichiers objets et la librairie
 - `make re` : Recompile entièrement le projet
 
-## Auteur
-
 Projet réalisé dans le cadre de l'école 42.
 
