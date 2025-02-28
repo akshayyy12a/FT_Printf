@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 OBJ_DIR = obj
 HEADER = ft_printf.h
 
-SRCS = ft_printf.c ft_printf_s.c ft_printf_u.c ft_printf_c.c ft_printf_i.c ft_printf_p.c ft_printf_x.c ft_printf_X.c ft_putchar_fd.c ft_putnbr_fd.c ft_putstr_fd.c
+SRCS = ft_printf.c ft_printf_s.c ft_printf_u.c ft_printf_c.c ft_printf_i.c ft_printf_p.c ft_printf_x.c ft_printf_bx.c ft_putchar_fd.c ft_putnbr_fd.c ft_putstr_fd.c
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 RED        = \033[0;31m
