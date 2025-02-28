@@ -6,13 +6,14 @@
 /*   By: shessoun <shessoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:24:56 by shessoun          #+#    #+#             */
-/*   Updated: 2025/02/27 16:30:11 by shessoun         ###   ########.fr       */
+/*   Updated: 2025/02/28 13:26:53 by shessoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_putchar_fd(char c, int fd)
 {
 	(void)!write(fd, &c, 1);
+	return (1);
 }

@@ -6,13 +6,18 @@
 /*   By: shessoun <shessoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 23:17:03 by shessoun          #+#    #+#             */
-/*   Updated: 2025/02/27 00:36:26 by shessoun         ###   ########.fr       */
+/*   Updated: 2025/02/28 13:25:53 by shessoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_printf_s(char *s)
+int	ft_printf_s(char *s)
 {
-	ft_putstr_fd(s, 1);
+	int	i;
+
+	if (!s)
+		s = "(null)";
+	i = ft_putstr_fd(s, 1);
+	return (i);
 }

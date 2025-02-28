@@ -6,17 +6,22 @@
 /*   By: shessoun <shessoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:27:14 by shessoun          #+#    #+#             */
-/*   Updated: 2025/02/27 16:30:29 by shessoun         ###   ########.fr       */
+/*   Updated: 2025/02/28 12:35:21 by shessoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
+	int	i;
+
+	i = 0;
 	while (*s)
 	{
 		(void)!write(fd, s, 1);
 		s++;
+		i++;
 	}
+	return (i);
 }

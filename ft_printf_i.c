@@ -6,13 +6,16 @@
 /*   By: shessoun <shessoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 00:00:54 by shessoun          #+#    #+#             */
-/*   Updated: 2025/02/27 00:36:19 by shessoun         ###   ########.fr       */
+/*   Updated: 2025/02/28 12:42:39 by shessoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_printf_i(int n)
+int	ft_printf_i(int n)
 {
-	ft_putnbr_fd(n, 1);
+	int	i;
+
+	i = ft_putnbr_fd(n, 1);
+	return (i);
 }
